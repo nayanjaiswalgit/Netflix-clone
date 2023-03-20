@@ -9,7 +9,7 @@ const {data} = useMovie(movieId as string);
 
 return (
     <div className='h-screen w-screen bg-blcak'>
-        <nav className='fixed w-full p-4 
+        <nav className={`fixed w-full p-4 
         z-10
         flex
         felx-row
@@ -17,12 +17,12 @@ return (
         gap-8
         bg-black
         bg-opacity-70
-        
-        
-        '><AiOutlineArrowLeft onClick={()=>router.push('/')} className='text-whtie cursor-pointer' size={40}/>
+        opacity-0
+        hover:opacity-100 `}
+        ><AiOutlineArrowLeft onClick={()=>router.push('/')} className='text-white cursor-pointer' size={40}/>
     <p className='text-white text-1xl md:text-3xl  font-bold'><span className='font-light'>Watching </span>{data?.title}</p>
     </nav>
-    <video className='h-full w-full' autoPlay controls src={data?.videoUrl}></video>
+    <video className='h-full w-full ' autoPlay controls src={data?.videoUrl}></video>
     </div>
 )
 }

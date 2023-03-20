@@ -3,12 +3,14 @@ import { without } from "lodash";
 import prismadb from '@/lib/prismadb'
 import serverAuth from "@/lib/serverAuth";
 
-export async function hadler(req:NextApiRequest,res:NextApiResponse){
+export default async function handler(req:NextApiRequest , res:NextApiResponse){
     try{
+  
         if(req.method === 'POST'){
             const {currentUser} = await serverAuth(req);
              const {movieId} = req.body;
 
+          
              const exisitingMovie = await prismadb.movie.findUnique({
                 where : {
                     id: movieId,
@@ -16,6 +18,7 @@ export async function hadler(req:NextApiRequest,res:NextApiResponse){
                 }
 
              });
+             
              if(!exisitingMovie){
                 throw new Error ('Invalid ID')
              }
@@ -32,7 +35,7 @@ export async function hadler(req:NextApiRequest,res:NextApiResponse){
              return res.status(200).json(user);
         }
         if(req.method === 'DELETE'){
-            const {currentUser} =await serverAuth(req);
+            const {currentUser} = await serverAuth(req);
 
             const{movieId} = req.body;
 

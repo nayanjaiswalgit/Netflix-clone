@@ -62,7 +62,7 @@ const Auth = () => {
                   onChange={(ev: any) => {
                     setName(ev.target.value);
                   }}
-                  id="email"
+                  id="name"
                   value={name}
                 />
               )}
@@ -73,6 +73,7 @@ const Auth = () => {
                 }}
                 id="email"
                 value={email}
+                
               />
 
               <Input
@@ -82,6 +83,7 @@ const Auth = () => {
                 }}
                 id="password"
                 value={password}
+                type="password"
               />
             </div>
             <button

@@ -32,7 +32,7 @@ const Home = () => {
     const {isOpen, closeModal } = useInfoModal();
     return (
    <>
-   <InfoModal visible={isOpen} onClose={()=>{closeModal}}></InfoModal>
+   <InfoModal visible={isOpen} onClose={closeModal}></InfoModal>
    <Navbar/>
    <Billboard/>
    <div className='pb-40'>

@@ -19,18 +19,24 @@ const FavoritesButton:React.FC<FavoritesButtonProps> = ({movieId}) =>{
 
     const toggleFavorites = useCallback(async () =>{
         let response;
-        
+      
         if(isFavorite){
+           
             response = await axios.delete('/api/favorite',{data:{movieId}});
-
         }
         else {
-            response = await axios.post('/api/favorite',{movieId})
-        }
+            try{
+               
+            response = await axios.post("/api/favorite",{movieId});
+            
+        }catch(err){}}
+        console.log(response)
 
+ 
 
 
         const updatedFavoriteIds = response?.data?.favoriteIds;
+      
 
         mutate({
             ...currentUser,
